@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles'
 ]
 
-INSTALLED_APPS += ['agents', 'applicants', 'properties']
+INSTALLED_APPS += ['persons', 'properties', 'compressor']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'real_estate_listing_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +68,12 @@ TEMPLATES = [
         },
     },
 ]
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 WSGI_APPLICATION = 'real_estate_listing_project.wsgi.application'
 
